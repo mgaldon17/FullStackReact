@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-class RegisterUser extends Component{
+class RegisterCurrency extends Component{
     constructor(props) {
         super(props);
         this.state = {
             name:'',
-            surname:'',
-            email:'',
-            username:'',
-            password:''
+            symbol:'',
+            supply:'',
+            rank:'',
+            maxSupply:'',
+            marketCapUsd:'',
+            volumeUsd24Hr:'',
+            priceUsd:'',
+            changePercent24Hr:'',
+            vwap24Hr:'',
+            explorer:'',
+            id:''
         }
         //If you dont use arrow function you will have to manually bind like this
         //If you dont bind you wont be able to access items in the state of this component because it wont be recognised in lifecycle
@@ -26,33 +33,66 @@ class RegisterUser extends Component{
     onSubmit(e){
         e.preventDefault();
         //Copying state object to newUser
-        let newUser = this.state;
-        this.props.addUser(newUser);
+        let newCurrency = this.state;
+        this.props.addCurrency(newCurrency);
         //Resetting the fields
         this.setState({
             name:'',
-            surname:'',
-            email:'',
-            username:'',
-            password:'',
-            address: ''
+            symbol:'',
+            supply:'',
+            rank:'',
+            maxSupply:'',
+            marketCapUsd:'',
+            volumeUsd24Hr:'',
+            priceUsd:'',
+            changePercent24Hr:'',
+            vwap24Hr:'',
+            explorer:'',
+            id:''
         });
+    }
+    onSearch(e){
+        e.preventDefault();
+        let newCurrency = this.state;
+        this.props.getCurrency(newCurrency);
+        this.setState({
+            name:'',
+            symbol:'',
+            supply:'',
+            rank:'',
+            maxSupply:'',
+            marketCapUsd:'',
+            volumeUsd24Hr:'',
+            priceUsd:'',
+            changePercent24Hr:'',
+            vwap24Hr:'',
+            explorer:'',
+            id:''
+        });
+        
     }
     onReset = () => {
         this.setState({
             ...this.state,
             name:'',
-            surname:'',
-            email:'',
-            username:'',
-            password:'',
-            address: ''
+            symbol:'',
+            supply:'',
+            rank:'',
+            maxSupply:'',
+            marketCapUsd:'',
+            volumeUsd24Hr:'',
+            priceUsd:'',
+            changePercent24Hr:'',
+            vwap24Hr:'',
+            explorer:'',
+            id:''
         })
      }
     render() {
         return(
             <form onSubmit={this.onSubmit}>
                 <div style={{display:'flex' }}>
+                    
                     <input
                         type = "text"
                         name = "name"
@@ -61,62 +101,41 @@ class RegisterUser extends Component{
                         value={this.state.name}
                         onChange={this.onChange}
                     />
-
-                    <input
-                        type = "text"
-                        name = "surname"
-                        placeholder="Surname"
-                        style={rightInput}
-                        value={this.state.surname}
-                        onChange={this.onChange}
-                    />
-                </div>
-                <br/>
-                <div style={{display:'flex', }}>
-                    <input
-                        type = "text"
-                        name = "username"
-                        placeholder="Username"
-                        style={leftInput}
-                        value={this.state.username}
-                        onChange={this.onChange}
-                    />
-
-                    <input
-                        type = "text"
-                        name = "password"
-                        placeholder="Password"
-                        style={rightInput}
-                        value={this.state.password}
-                        onChange={this.onChange}
-                    />
-                </div>
-                <br/>
-                <div style={{display:'flex' }}>
-                    <input
-                        type = "text"
-                        name = "email"
-                        placeholder="Email"
-                        style={leftInput}
-                        value={this.state.email}
-                        onChange={this.onChange}
-                    />
-
-                    <input
-                        type = "text"
-                        name = "address"
-                        placeholder="Address"
-                        style={rightInput}
-                        value={this.state.address}
-                        onChange={this.onChange}
-                    />
                    
+                    <input
+                        type = "text"
+                        name = "symbol"
+                        placeholder="Symbol"
+                        style={rightInput}
+                        value={this.state.symbol}
+                        onChange={this.onChange}
+                    />
+                    
+                    <input
+                        type = "text"
+                        name = "id"
+                        placeholder="ID"
+                        style={rightInput}
+                        value={this.state.id}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type = "text"
+                        name = "rank"
+                        placeholder="Rank"
+                        style={rightInput}
+                        value={this.state.rank}
+                        onChange={this.onChange}
+                    />
                 </div>
                 <br/>
+                
+                
                 <input
-                    type="submit"
-                    value="Submit"
+                    type="search"
+                    value="Search"
                     className="btn"
+                    onClick={this.onSearch}
                 />
                 <span style={rightInput}></span>    
                 <input
@@ -125,6 +144,9 @@ class RegisterUser extends Component{
                     className="btn"
                     onClick={this.onReset}
                 />
+                <span style={rightInput}></span>    
+
+                
                 
                 <br/>
             </form>
@@ -144,8 +166,8 @@ const rightInput = {
     margin:'10px 0px 0px 10px'
 }
 
-RegisterUser.propTyoes = {
-    addUser:PropTypes.func.isRequired,
+RegisterCurrency.propTyoes = {
+    addCurrency:PropTypes.func.isRequired,
 }
 
-export default RegisterUser;
+export default RegisterCurrency;

@@ -1,41 +1,57 @@
 import React, {Component, useCallback} from "react";
 import ReactDOM from "react-dom";
 import Header from '../../../frontend/src/components/layouts/Header';
-import RegisterUser from '../../../frontend/src/components/register-user/RegisterUser';
-import Users from '../../../frontend/src/components/users/Users';
+import RegisterCurrency from '../../../frontend/src/components/register-currency/RegisterCurrency';
+import Currencies from '../../../frontend/src/components/currencies/Currencies';
 import axios from "axios";
+
 export class App extends Component {
     constructor(props) {
         super(props);
+        this.props = props;
         this.state = {
-            users:[
+            currencies:[
             ]
         }
     }
-
+    
     componentDidMount() {
-        axios.get('/user/all')
-            .then(response => this.setState({users:response.data}))
+        axios.get('/currency/all')
+            .then(response => this.setState({currencies:response.data}))
     }
 
-    //Deleting User
-    removeUser = (id) =>{
-        axios.delete(`/user/${id}`)
+    //Deleting Currency
+    removeCurrency = (id) =>{
+        axios.delete(`/currency/${id}`)
             .then(
                 response =>this.setState( //Updating UI
-                    {users: [...this.state.users.filter(
-                            user => user.id !== id
+                    {currencies: [...this.state.currencies.filter(
+                        currency => currency.id !== id
                         )]}
                 )
             );
     }
 
-    addUser = (newUser) =>{
-        axios.post('/user/save',newUser)
+    //Getting currency
+    getCurrency = (id) => {
+
+        axios.get(`/currency/${id}`)
+            .then(
+                response => this.setState(
+                    {currencies: [...this.state.currencies.filter(
+                        currency => currency.id !== id
+                        )]
+                    }
+                )
+            );
+    }
+
+    addCurrency = (newCurrency) =>{
+        axios.post('/currency/save',newCurrency)
             .then(
                 (response) =>{
                     console.log(response.data);
-                    this.setState({users:[...this.state.users,response.data]})
+                    this.setState({currencies:[...this.state.currencies,response.data]})
                 }
             );
     }
@@ -44,8 +60,8 @@ export class App extends Component {
         return (
             <div className="container">
                 <Header/>
-                <RegisterUser addUser={this.addUser}/>
-                <Users users={this.state.users} removeUser={this.removeUser}/>
+                <RegisterCurrency addCurrency={this.addCurrency}/>
+                <Currencies currencies={this.state.currencies} removeCurrency={this.removeCurrency}/>
             </div>
         );
     }

@@ -4,7 +4,7 @@ function Header(){
     return(
         <header style={header}>
             <MenuIcon/>
-            <h2>User Registration</h2>
+            <h2>Currency Registration</h2>
             <p></p>
         </header>
     );

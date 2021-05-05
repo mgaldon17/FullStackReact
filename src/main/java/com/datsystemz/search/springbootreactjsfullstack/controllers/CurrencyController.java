@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datsystemz.search.springbootreactjsfullstack.exceptions.ResourceNotFoundException;
@@ -27,59 +31,32 @@ public class CurrencyController {
 		this.currencyRepository = currencyRepository;
 	}
 	
-	@PostMapping("/currency/save")
-    public Currency saveUser(@RequestBody Currency currency){
+	@PostMapping("/save")
+    public Currency saveCurrency(@RequestBody Currency currency){
+		System.out.println("New currency created: " + currency.getId());
         return this.currencyRepository.save(currency);
     }
 	
-	@GetMapping("/currency/{id}")
+	@GetMapping(value="/{id}")
+	@ResponseBody
     public ResponseEntity<Currency> getCurrency(@PathVariable(value = "id" ) String id){
-		
+		System.out.println("GetCurrency: " + id);
 		Currency currency = this.currencyRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("User not found")
+                ()-> new ResourceNotFoundException("Currency not found")
         );
 		
 		return ResponseEntity.ok().body(currency);
 		
     }
-	@PutMapping("/currency/{id}")
-    public Currency updateCurrency(@RequestBody Currency newCurrency, 
-    							@PathVariable(value = "symbol") String id){
-		
-		
-		return this.currencyRepository.findById(id).map(
-				currency -> {currency.setId(newCurrency.getId());
-				currency.setVolumeUsd24Hr(newCurrency.getVolumeUsd24Hr());
-				currency.setPriceUsd(newCurrency.getPriceUsd());
-				currency.setName(newCurrency.getName());
-				currency.setChangePercent24Hr(newCurrency.getChangePercent24Hr());
-				currency.setExplorer(newCurrency.getExplorer());
-				currency.setMarketCapUsd(newCurrency.getMarketCapUsd());
-				currency.setSupply(newCurrency.getSupply());
-				currency.setVwap24Hr(newCurrency.getVwap24Hr());
-				currency.setRank(newCurrency.getRank());
-				currency.setMaxSupply(newCurrency.getMaxSupply());
-				currency.setSymbol(newCurrency.getSymbol());
-
-				return this.currencyRepository.save(currency);
-				})
-				.orElseGet(()->{
-					newCurrency.setId(id);
-					return this.currencyRepository.save(newCurrency);
-				});
-		
-     
-
-    }
 	
-	@GetMapping("/currency/all")
+	@GetMapping("/all")
     public ResponseEntity<List<Currency>> getCurrencies(){
         return ResponseEntity.ok(
           this.currencyRepository.findAll()
         );
     }
-	@DeleteMapping("/currency/{id}")
-    public ResponseEntity<Void> removeUser(@PathVariable(value = "id") String id){
+	@DeleteMapping("/{id}")
+    public ResponseEntity<Void> removeCurrency(@PathVariable(value = "id") String id){
 		Currency currency =this.currencyRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Currency not found"+id)
         );

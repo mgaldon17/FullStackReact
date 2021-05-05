@@ -5,11 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Currency {
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String rank;
 	private String symbol;
 	private String name;
@@ -22,6 +24,7 @@ public class Currency {
 	private String vwap24Hr;
 	private String explorer;
 	private String id;
+	
 	
 	public Currency() {};
 	public Currency(String id, String rank, String symbol, String name, String supply, String maxSupply,
