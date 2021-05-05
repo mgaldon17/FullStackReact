@@ -1,4 +1,4 @@
-package com.datsystemz.nyakaz.springbootreactjsfullstack.controllers;
+package com.datsystemz.search.springbootreactjsfullstack.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

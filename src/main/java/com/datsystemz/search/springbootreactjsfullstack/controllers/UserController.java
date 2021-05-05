@@ -1,8 +1,8 @@
-package com.datsystemz.nyakaz.springbootreactjsfullstack.controllers;
+package com.datsystemz.search.springbootreactjsfullstack.controllers;
 
-import com.datsystemz.nyakaz.springbootreactjsfullstack.exceptions.ResourceNotFoundException;
-import com.datsystemz.nyakaz.springbootreactjsfullstack.models.User;
-import com.datsystemz.nyakaz.springbootreactjsfullstack.repositories.UserRepository;
+import com.datsystemz.search.springbootreactjsfullstack.exceptions.ResourceNotFoundException;
+import com.datsystemz.search.springbootreactjsfullstack.models.User;
+import com.datsystemz.search.springbootreactjsfullstack.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +48,7 @@ public class UserController {
                     user.setEmail(newUser.getEmail());
                     user.setUsername(newUser.getUsername());
                     user.setPassword(newUser.getPassword());
+                    user.setAddress(newUser.getAddress());
                     return this.userRepository.save(user);
                 })
                 .orElseGet(()->{

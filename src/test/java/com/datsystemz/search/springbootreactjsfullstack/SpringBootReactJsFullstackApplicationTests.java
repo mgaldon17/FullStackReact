@@ -1,4 +1,4 @@
-package com.datsystemz.nyakaz.springbootreactjsfullstack;
+package com.datsystemz.search.springbootreactjsfullstack;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

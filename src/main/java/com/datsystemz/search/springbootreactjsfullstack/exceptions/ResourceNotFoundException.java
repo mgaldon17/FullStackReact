@@ -1,4 +1,4 @@
-package com.datsystemz.nyakaz.springbootreactjsfullstack.exceptions;
+package com.datsystemz.search.springbootreactjsfullstack.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

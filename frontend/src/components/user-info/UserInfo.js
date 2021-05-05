@@ -25,14 +25,20 @@ class UserInfo extends Component{
             <div style={this.infoStyle()}>
                 <div style={iconUsername}>
                     <AccountCircleIcon style={{color:"#138a04", margin:"0px 10px 0px 0px"}}/>
-                    <p>{this.props.user.name }</p>
-                    <p>{this.props.user.surname }</p>
+                    <p>{this.props.user.name} </p>
+                    <p>{this.props.user.surname}</p>
+                   
+                    
                 </div>
 
                 <p>{this.props.user.email}</p>
                 <p>{this.props.user.username}</p>
+                <p>{this.props.user.address}</p>
                 <div style={buttons}>
                     {/*<IconButton color="secondary" onClick={this.props.removeUser.bind(this,id )} >  Because binding in faling in Jest i have used arrow function binding*/}
+                    <IconButton aria-label="secondary" color="primary" onClick={(e) =>this.props.removeUser(id,e)}>
+                        <DeleteIcon />
+                    </IconButton>
                     <IconButton color="secondary" onClick={(e) =>this.props.removeUser(id,e)} >
                         <DeleteIcon />
                     </IconButton>

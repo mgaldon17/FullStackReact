@@ -1,4 +1,4 @@
-package com.datsystemz.nyakaz.springbootreactjsfullstack;
+package com.datsystemz.search.springbootreactjsfullstack;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -34,9 +34,21 @@ class RegisterUser extends Component{
             surname:'',
             email:'',
             username:'',
-            password:''
+            password:'',
+            address: ''
         });
     }
+    onReset = () => {
+        this.setState({
+            ...this.state,
+            name:'',
+            surname:'',
+            email:'',
+            username:'',
+            password:'',
+            address: ''
+        })
+     }
     render() {
         return(
             <form onSubmit={this.onSubmit}>
@@ -89,7 +101,16 @@ class RegisterUser extends Component{
                         value={this.state.email}
                         onChange={this.onChange}
                     />
-                   <span style={rightInput}></span>
+
+                    <input
+                        type = "text"
+                        name = "address"
+                        placeholder="Address"
+                        style={rightInput}
+                        value={this.state.address}
+                        onChange={this.onChange}
+                    />
+                   
                 </div>
                 <br/>
                 <input
@@ -97,6 +118,14 @@ class RegisterUser extends Component{
                     value="Submit"
                     className="btn"
                 />
+                <span style={rightInput}></span>    
+                <input
+                    type="reset"
+                    value="Reset"
+                    className="btn"
+                    onClick={this.onReset}
+                />
+                
                 <br/>
             </form>
         )

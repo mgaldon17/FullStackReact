@@ -1,4 +1,4 @@
-package com.datsystemz.nyakaz.springbootreactjsfullstack.models;
+package com.datsystemz.search.springbootreactjsfullstack.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,15 +16,17 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private String address;
 
     protected User(){}
 
-    public User(String name, String surname, String email, String username, String password){
+    public User(String name, String surname, String email, String username, String password, String address){
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.address = address;
     }
 
     public Long getId(){
@@ -74,4 +76,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 }
