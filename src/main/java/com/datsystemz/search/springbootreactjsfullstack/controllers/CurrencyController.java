@@ -39,18 +39,16 @@ public class CurrencyController {
 	
 	@GetMapping(value="/{id}")
 	@ResponseBody
-    public ResponseEntity<Currency> getCurrency(@PathVariable(value = "id" ) String id){
+    public Optional<Currency> getCurrency(@PathVariable(value = "id" ) String id){
 		System.out.println("GetCurrency: " + id);
-		Currency currency = this.currencyRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Currency not found")
-        );
 		
-		return ResponseEntity.ok().body(currency);
+		//System.out.println(currency.isEmpty());
+		return this.currencyRepository.findById(id);
 		
     }
 	
 	@GetMapping("/all")
-    public ResponseEntity<List<Currency>> getCurrencies(){
+    public ResponseEntity<Iterable<Currency>> getCurrencies(){
         return ResponseEntity.ok(
           this.currencyRepository.findAll()
         );
