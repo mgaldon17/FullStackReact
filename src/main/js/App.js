@@ -22,7 +22,7 @@ export class App extends Component {
 
     //Deleting Currency
     removeCurrency = (id) =>{
-        axios.delete(`/currency/${id}`)
+        axios.delete(`/${id}`)
             .then(
                 response =>this.setState( //Updating UI
                     {currencies: [...this.state.currencies.filter(
@@ -35,7 +35,7 @@ export class App extends Component {
     //Getting currency
     getCurrency = (id) => {
 
-        axios.get(`/currency/${id}`)
+        axios.get(`/${id}`)
             .then(
                 response => this.setState(
                     {currencies: [...this.state.currencies.filter(
@@ -47,7 +47,7 @@ export class App extends Component {
     }
 
     addCurrency = (newCurrency) =>{
-        axios.post('/currency/save',newCurrency)
+        axios.post('/save',newCurrency)
             .then(
                 (response) =>{
                     console.log(response.data);

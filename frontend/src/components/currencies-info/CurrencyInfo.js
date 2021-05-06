@@ -52,6 +52,6 @@ const buttons = {
 }
 //PropTypes
 CurrencyInfo.propTypes = {
-    user : PropTypes.object.isRequired
+    currency : PropTypes.object.isRequired
 }
 export  default  CurrencyInfo;

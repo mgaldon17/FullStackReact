@@ -56,21 +56,11 @@ class RegisterCurrency extends Component{
         let newCurrency = this.state;
         this.props.getCurrency(newCurrency);
         this.setState({
-            name:'',
-            symbol:'',
-            supply:'',
-            rank:'',
-            maxSupply:'',
-            marketCapUsd:'',
-            volumeUsd24Hr:'',
-            priceUsd:'',
-            changePercent24Hr:'',
-            vwap24Hr:'',
-            explorer:'',
-            id:''
+            
+            id:this.state.id
         });
-        
     }
+   
     onReset = () => {
         this.setState({
             ...this.state,
@@ -90,7 +80,8 @@ class RegisterCurrency extends Component{
      }
     render() {
         return(
-            <form onSubmit={this.onSubmit}>
+            
+            <form onSubmit={this.onSearch}>
                 <div style={{display:'flex' }}>
                     
                     <input
@@ -130,12 +121,11 @@ class RegisterCurrency extends Component{
                 </div>
                 <br/>
                 
-                
                 <input
-                    type="search"
-                    value="Search"
+                    type="submit"
+                    value="Search by Id"
                     className="btn"
-                    onClick={this.onSearch}
+                    oncliCk = {this.onSearch}
                 />
                 <span style={rightInput}></span>    
                 <input
@@ -144,12 +134,11 @@ class RegisterCurrency extends Component{
                     className="btn"
                     onClick={this.onReset}
                 />
-                <span style={rightInput}></span>    
-
                 
                 
-                <br/>
             </form>
+
+            
         )
     }
 }
