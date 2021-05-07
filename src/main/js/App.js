@@ -47,7 +47,7 @@ export class App extends Component {
         return (
             <div className="container">
                 <Header/>
-                <RegisterCurrency addCurrency={this.getCurrency}/>
+                <RegisterCurrency addCurrency={this.addCurrency}/>
                 <Currencies currencies={this.state.currencies} removeCurrency={this.removeCurrency}/>
             </div>
         );
