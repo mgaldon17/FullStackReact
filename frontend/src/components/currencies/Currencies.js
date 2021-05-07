@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CurrencyInfo from "../currencies-info/CurrencyInfo";
 import PropTypes from "prop-types";
 class Currencies extends Component{
 

@@ -16,7 +16,7 @@ export class App extends Component {
     }
     
     componentDidMount() {
-        axios.get('/currency/all')
+        axios.get('/all')
             .then(response => this.setState({currencies:response.data}))
     }
 
@@ -32,19 +32,6 @@ export class App extends Component {
             );
     }
 
-    //Getting currency
-    getCurrency = (id) => {
-
-        axios.get(`/${id}`)
-            .then(
-                response => this.setState(
-                    {currencies: [...this.state.currencies.filter(
-                        currency => currency.id !== id
-                        )]
-                    }
-                )
-            );
-    }
 
     addCurrency = (newCurrency) =>{
         axios.post('/save',newCurrency)

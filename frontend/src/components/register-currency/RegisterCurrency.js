@@ -6,20 +6,10 @@ class RegisterCurrency extends Component{
         this.state = {
             name:'',
             symbol:'',
-            supply:'',
             rank:'',
-            maxSupply:'',
-            marketCapUsd:'',
-            volumeUsd24Hr:'',
-            priceUsd:'',
-            changePercent24Hr:'',
-            vwap24Hr:'',
-            explorer:'',
             id:''
         }
-        //If you dont use arrow function you will have to manually bind like this
-        //If you dont bind you wont be able to access items in the state of this component because it wont be recognised in lifecycle
-        //this.onChange = this.onChange.bind(this);
+        
         this.onSubmit = this.onSubmit.bind(this);
     }
 
@@ -39,15 +29,7 @@ class RegisterCurrency extends Component{
         this.setState({
             name:'',
             symbol:'',
-            supply:'',
             rank:'',
-            maxSupply:'',
-            marketCapUsd:'',
-            volumeUsd24Hr:'',
-            priceUsd:'',
-            changePercent24Hr:'',
-            vwap24Hr:'',
-            explorer:'',
             id:''
         });
     }
@@ -81,9 +63,9 @@ class RegisterCurrency extends Component{
     render() {
         return(
             
-            <form onSubmit={this.onSearch}>
-                 <br>
-                <div style={{display:'flex' }}>
+            <form onSubmit={this.onSubmit}>
+                 
+                <div style={{display:'flex'}}>
                    
                     <input
                         type = "text"
@@ -120,8 +102,8 @@ class RegisterCurrency extends Component{
                         onChange={this.onChange}
                     />
                 </div>
-                <br/>
                 
+                <br></br>
                 <input
                     type="submit"
                     value="Search by Id"
@@ -134,6 +116,13 @@ class RegisterCurrency extends Component{
                     value="Reset"
                     className="btn"
                     onClick={this.onReset}
+                />
+                <span style={rightInput}></span>    
+                <input
+                    type="submit"
+                    value="Save"
+                    className="btn"
+                    onClick={this.onSubmit}
                 />
                 
                 
@@ -158,7 +147,7 @@ const rightInput = {
 
 RegisterCurrency.propTypes = {
     addCurrency:PropTypes.func.isRequired,
-    getCurrency:PropTypes.func.isRequired
+
 }
 
 export default RegisterCurrency;

@@ -8,7 +8,7 @@ class CurrencyInfo extends Component{
     //dynamic Styling
     infoStyle = () =>{
         return {
-            backgroundColor: (this.props.user.id %2) == 0? '#c8d4f7cc' :'',
+            backgroundColor: (this.props.currency.id %2) == 0? '#c8d4f7cc' :'',
             padding:'10px',
             borderBottom: '1px #ccc dotted',
             display:'flex',
@@ -28,10 +28,10 @@ class CurrencyInfo extends Component{
                 <p>{this.props.currency.priceUsd}</p>
                 <div style={buttons}>
                     {/*<IconButton color="secondary" onClick={this.props.removeUser.bind(this,id )} >  Because binding in faling in Jest i have used arrow function binding*/}
-                    <IconButton aria-label="secondary" color="primary" onClick={(e) =>this.props.removeUser(id,e)}>
+                    <IconButton aria-label="secondary" color="primary" onClick={(e) =>this.props.removeCurrency(id,e)}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton color="secondary" onClick={(e) =>this.props.removeUser(id,e)} >
+                    <IconButton color="secondary" onClick={(e) =>this.props.removeCurrency(id,e)} >
                         <DeleteIcon />
                     </IconButton>
                 </div>
