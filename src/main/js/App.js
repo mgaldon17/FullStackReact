@@ -8,7 +8,7 @@ import axios from "axios";
 export class App extends Component {
     constructor(props) {
         super(props);
-        this.props = props;
+
         this.state = {
             currencies:[
             ]
@@ -60,7 +60,7 @@ export class App extends Component {
         return (
             <div className="container">
                 <Header/>
-                <RegisterCurrency addCurrency={this.addCurrency}/>
+                <RegisterCurrency addCurrency={this.getCurrency}/>
                 <Currencies currencies={this.state.currencies} removeCurrency={this.removeCurrency}/>
             </div>
         );

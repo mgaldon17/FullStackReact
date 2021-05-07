@@ -19,7 +19,7 @@ class CurrencyInfo extends Component{
     }
 
     render() {
-        //Destructuring instead of using this.props.user.<variable> you can now use name | surname
+ 
         const {id} = this.props.currency;
         return(
             <div style={this.infoStyle()}>
@@ -54,4 +54,4 @@ const buttons = {
 CurrencyInfo.propTypes = {
     currency : PropTypes.object.isRequired
 }
-export  default  CurrencyInfo;
+export default CurrencyInfo;

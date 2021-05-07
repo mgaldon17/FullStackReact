@@ -57,7 +57,7 @@ class RegisterCurrency extends Component{
         this.props.getCurrency(newCurrency);
         this.setState({
             
-            id:this.state.id
+            id:''
         });
     }
    
@@ -82,8 +82,9 @@ class RegisterCurrency extends Component{
         return(
             
             <form onSubmit={this.onSearch}>
+                 <br>
                 <div style={{display:'flex' }}>
-                    
+                   
                     <input
                         type = "text"
                         name = "name"
@@ -92,7 +93,7 @@ class RegisterCurrency extends Component{
                         value={this.state.name}
                         onChange={this.onChange}
                     />
-                   
+                    
                     <input
                         type = "text"
                         name = "symbol"
@@ -125,7 +126,7 @@ class RegisterCurrency extends Component{
                     type="submit"
                     value="Search by Id"
                     className="btn"
-                    oncliCk = {this.onSearch}
+                    onClick = {this.onSearch}
                 />
                 <span style={rightInput}></span>    
                 <input
@@ -155,8 +156,9 @@ const rightInput = {
     margin:'10px 0px 0px 10px'
 }
 
-RegisterCurrency.propTyoes = {
+RegisterCurrency.propTypes = {
     addCurrency:PropTypes.func.isRequired,
+    getCurrency:PropTypes.func.isRequired
 }
 
 export default RegisterCurrency;
