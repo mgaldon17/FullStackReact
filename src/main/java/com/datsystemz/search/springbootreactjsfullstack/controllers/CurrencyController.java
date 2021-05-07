@@ -34,11 +34,11 @@ public class CurrencyController {
 	
 	@GetMapping(value="/{id}")
 	@ResponseBody
-    public Optional<Currency> getCurrency(@PathVariable(value = "id" ) String id){
+    public Currency getCurrency(@PathVariable(value = "id" ) String id){
 		
 		System.out.println("GetCurrency: " + id);
 
-		return this.currencyRepository.findById(id);
+		return this.currencyRepository.findById(id).get();
 		
     }
 	
@@ -49,13 +49,14 @@ public class CurrencyController {
         );
     }
 	@DeleteMapping("/{id}")
-    public ResponseEntity<Void> removeCurrency(@PathVariable(value = "id") String id){
+    public void removeCurrency(@PathVariable(value = "id") String id){
+		
 		Currency currency =this.currencyRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Currency not found"+id)
         );
-
+		System.out.println("Deleting currency: " + id);
+      
         this.currencyRepository.delete(currency);
-        return ResponseEntity.ok().build();
     }
 
 

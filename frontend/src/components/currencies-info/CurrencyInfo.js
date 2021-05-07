@@ -28,7 +28,7 @@ class CurrencyInfo extends Component{
                 <p>{this.props.currency.priceUsd}</p>
                 <div style={buttons}>
                     {/*<IconButton color="secondary" onClick={this.props.removeUser.bind(this,id )} >  Because binding in faling in Jest i have used arrow function binding*/}
-                    <IconButton aria-label="secondary" color="primary" onClick={(e) =>this.props.removeCurrency(id,e)}>
+                    <IconButton aria-label="secondary" color="primary" onClick={(e) =>this.props.removeCurrency(id)}>
                         <DeleteIcon />
                     </IconButton>
                     <IconButton color="secondary" onClick={(e) =>this.props.removeCurrency(id,e)} >
