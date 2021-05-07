@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
+import { DataGrid } from '@material-ui/data-grid';
 class CurrencyInfo extends Component{
 
     //dynamic Styling
@@ -15,21 +17,33 @@ class CurrencyInfo extends Component{
             alignItems:'center',
             justifyContent:'space-between',
             justifyItems: 'flex-start',
+            
         }
     }
-
+    
     render() {
  
         const {id} = this.props.currency;
         return(
+
             <div style={this.infoStyle()}>
-                <p>{this.props.currency.name}</p>
+               <div style={iconDollar}>
+                    <MonetizationOnIcon style={{color:"#019221", margin:"0px 15px 0px 0px"}}/>
+                    <p>{this.props.currency.name}</p>
+               </div>
+                
                 <p>{this.props.currency.symbol}</p>
                 <p>{this.props.currency.priceUsd}</p>
+                <p>{this.props.currency.vwap24Hr}</p>
+                <p>{this.props.currency.explorer}</p>
+
+                
+                
+                    
                 <div style={buttons}>
-                    {/*<IconButton color="secondary" onClick={this.props.removeUser.bind(this,id )} >  Because binding in faling in Jest i have used arrow function binding*/}
-                    <IconButton aria-label="secondary" color="primary" onClick={(e) =>this.props.removeCurrency(id)}>
-                        <DeleteIcon />
+                   
+                    <IconButton aria-label="secondary" color="primary" >
+                        <EditIcon />
                     </IconButton>
                     <IconButton color="secondary" onClick={(e) =>this.props.removeCurrency(id,e)} >
                         <DeleteIcon />
@@ -40,8 +54,7 @@ class CurrencyInfo extends Component{
         );
     }
 }
-
-const iconUsername = {
+const iconDollar = {
     display: 'flex',
     justifyContent:'space-between',
 

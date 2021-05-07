@@ -7,13 +7,10 @@
     "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js",
     "test": "jest"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    
-  },
+  "bugs": {},
   "homepage": ".",
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -37,6 +34,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@material-ui/data-grid": "^4.0.0-alpha.27",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.20.0",
     "lodash": "^4.17.20",
