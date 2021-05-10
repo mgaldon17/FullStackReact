@@ -4,7 +4,8 @@
 
 ## Lets go
 
-Before we move on make sure you have folder structure that we ended up with on the [Part 1](https://github.com/nyakaz73/spring-boot-reactjs-fullstack) of this series
+Folder structure
+
 ```cmd
 - sample-project-root
     - frontend
